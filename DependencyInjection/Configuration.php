@@ -65,7 +65,7 @@ class Configuration implements ConfigurationInterface
                         ->end()
                         ->booleanNode('fsync')->defaultFalse()->end()
                         ->scalarNode('timeout')
-                            ->defaultValue(\MongoCursor::$timeout)
+                            ->defaultValue(25000 /* \MongoCursor::$timeout */)
                             ->beforeNormalization()
                                 ->ifTrue(function($v) { return is_numeric($v); })
                                 ->then(function($v) { return (int) $v; })
